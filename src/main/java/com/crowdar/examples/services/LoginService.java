@@ -5,21 +5,29 @@ import com.crowdar.driver.DriverManager;
 import com.crowdar.examples.constants.LoginConstants;
 import org.testng.Assert;
 
-/**
- * This class contains the business logic.
- * We can have querys, requests or steps to do certain things (how to log into the app).
- * If we need to only complete a field or click a button, we can put it in the steps.
- */
+import static com.crowdar.core.actions.ActionManager.*;
+
 public class LoginService {
 
-    public static void doLogin(String email, String password){
-        MobileActionManager.setInput(LoginConstants.EMAIL_INPUT_LOCATOR, email);
-        MobileActionManager.setInput(LoginConstants.PASSWORD_INPUT_LOCATOR, password);
-        MobileActionManager.click(LoginConstants.SIGN_IN_BUTTON_LOCATOR);
+    public static void inputMail(String email){
+        setInput(LoginConstants.INPUT_MAIL_XPATH, email);
     }
-
+    public static void inputPassword(String password){
+        setInput(LoginConstants.INPUT_PASSWORD_XPATH, password);
+    }
+    public static void clickLogin() {
+        click(LoginConstants.BTN_LOGIN_XPATH);
+    }
+    public static void clickSingUp() {
+        click(LoginConstants.BTN_SING_UP_XPATH);
+    }
+    public static void doLogin(String email, String password){
+        inputMail(email);
+        inputPassword(password);
+        clickLogin();
+    }
     public static void isViewLoaded(){
-        MobileActionManager.waitVisibility(LoginConstants.SIGN_UP_BUTTON_LOCATOR);
-        Assert.assertTrue(MobileActionManager.isVisible(LoginConstants.EMAIL_INPUT_LOCATOR), LoginConstants.VIEW_NOT_DISPLAYED_MESSAGE);
+        MobileActionManager.waitVisibility(LoginConstants.BTN_SING_UP_XPATH);
+        Assert.assertTrue(MobileActionManager.isVisible(LoginConstants.INPUT_MAIL_XPATH), "No se cargo la app correctamente");
     }
 }

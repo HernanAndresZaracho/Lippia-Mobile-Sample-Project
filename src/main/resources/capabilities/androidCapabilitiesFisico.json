@@ -1,0 +1,7 @@
+{
+  "deviceName": "{{deviceName}}",
+  "app": "{{app}}",
+  "platformName": "Android",
+  "resetKeyboard": "true",
+  "unicodeKeyboard": "true"
+}
