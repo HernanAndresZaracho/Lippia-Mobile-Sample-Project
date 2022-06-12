@@ -15,7 +15,8 @@ Feature: El usuario se loguea y desloguea exitosamente
 
   @Login
   Scenario Outline: El usuario se desloguea correctamente
-    When El usuario ingresa su <mail> y su <password>.
+    When El usuario ingresa su <mail>
+    And El usuario ingresa su <password>
     And El usuario clickea en el boton Login
     And El usuario clickea en el boton del Menu
     And El usuario clickea en el boton Logout
