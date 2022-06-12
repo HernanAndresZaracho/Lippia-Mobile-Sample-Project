@@ -1,6 +1,7 @@
 package com.crowdar.examples.steps;
 
 import com.crowdar.core.PageSteps;
+import com.crowdar.core.PropertyManager;
 import com.crowdar.examples.services.HomeService;
 import com.crowdar.examples.services.LoginService;
 import com.crowdar.examples.services.SettingsService;
@@ -11,12 +12,9 @@ import io.cucumber.java.en.When;
 
 
 public class HomeSteps extends PageSteps {
-    //Lo hice de esta manera que creo es mas rapido, ya que no puedo probar al no tener los recursos necesarios
-    String mail = "hernanandreszaracho@gmail.com";
-    String password = "1705962013";
     @Given("El usuario se encuetra logueado")
     public void elUsuarioSeEncuetraLogueado() {
-        LoginService.doLogin(mail, password);
+        LoginService.doLogin(PropertyManager.getProperty("email"), PropertyManager.getProperty("password"));
     }
 
     @When("El usuario clickea en el boton +")
@@ -30,10 +28,10 @@ public class HomeSteps extends PageSteps {
     }
 
     @And("El usuario ingresa la (.*), el (.*) y el (.*) del Start")
-    public void elUsuarioIngresaLaHoraElMinutoYElDiaDelStart(int arg0, int arg1, int arg2) {
-        HomeService.inputStartHour(arg0);
-        HomeService.inputStartMinutes(arg1);
-        HomeService.inputStartDay(arg2);
+    public void elUsuarioIngresaLaHoraElMinutoYElDiaDelStart(int startHour, int startMinutes, int startDay) {
+        HomeService.inputStartHour(startHour);
+        HomeService.inputStartMinutes(startMinutes);
+        HomeService.inputStartDay(startDay);
     }
 
     @And("El usuario guarda el Start")
@@ -47,10 +45,10 @@ public class HomeSteps extends PageSteps {
     }
 
     @And("El usuario ingresa la (.*), el (.*) y el (.*) del End")
-    public void elUsuarioIngresaLaHoraElMinutoYElDiaDelEnd(int arg0, int arg1, int arg2) {
-        HomeService.inputEndHour(arg0);
-        HomeService.inputEndHour(arg1);
-        HomeService.inputEndHour(arg2);
+    public void elUsuarioIngresaLaHoraElMinutoYElDiaDelEnd(int endHour, int endMinutes, int endDay) {
+        HomeService.inputEndHour(endHour);
+        HomeService.inputEndMinutes(endMinutes);
+        HomeService.inputEndDay(endDay);
     }
 
     @And("El usuario guarda el End")

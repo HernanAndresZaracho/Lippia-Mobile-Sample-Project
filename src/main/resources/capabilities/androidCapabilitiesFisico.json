@@ -3,5 +3,7 @@
   "app": "{{app}}",
   "platformName": "Android",
   "resetKeyboard": "true",
-  "unicodeKeyboard": "true"
+  "unicodeKeyboard": "true",
+  "appPackage": "me.clockify.andorid",
+  "appActivity": "me.clockify.android.presenter.SplashActivity"
 }

@@ -4,7 +4,6 @@ import com.crowdar.core.actions.MobileActionManager;
 import com.crowdar.examples.constants.HomeConstants;
 import com.crowdar.examples.constants.SettingsConstants;
 import org.testng.Assert;
-import com.crowdar.core.actions.ActionManager;
 
 import static com.crowdar.core.actions.ActionManager.*;
 
