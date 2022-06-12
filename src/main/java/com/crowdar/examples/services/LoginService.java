@@ -17,9 +17,6 @@ public class LoginService {
     public static void clickLogin() {
         click(LoginConstants.BTN_LOGIN_XPATH);
     }
-    public static void clickSingUp() {
-        click(LoginConstants.BTN_SING_UP_XPATH);
-    }
     public static void doLogin(String email, String password){
         inputMail(email);
         inputPassword(password);

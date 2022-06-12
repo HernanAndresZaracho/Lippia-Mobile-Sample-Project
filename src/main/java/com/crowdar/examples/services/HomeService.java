@@ -49,8 +49,6 @@ public class HomeService {
     }
     public static void clickEntryCancel() {
         click(HomeConstants.BTN_ADD_ENTRY_CANCEL_XPATH);
-    }
-    public static void clickCancelConfirm() {
         click(HomeConstants.BTN_ADD_ENTRY_CANCEL_CONFIRM_XPATH);
     }
     public static void checkEntryCreated() {
