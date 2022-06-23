@@ -4,7 +4,8 @@ import com.crowdar.core.PageSteps;
 import com.crowdar.core.PropertyManager;
 import com.crowdar.examples.services.HomeService;
 import com.crowdar.examples.services.LoginService;
-import com.crowdar.examples.services.SettingsService;
+import com.crowdar.examples.validator.HomeValidator;
+import com.crowdar.examples.validator.LoginValidator;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -22,33 +23,14 @@ public class HomeSteps extends PageSteps {
         HomeService.clickEntry();
     }
 
-    @And("El usuario clickea en el boton Start")
-    public void elUsuarioClickeaEnElBotonStart() {
-        HomeService.clickEntryStart();
-    }
 
-    @And("El usuario ingresa la (.*), el (.*) y el (.*) del Start")
-    public void elUsuarioIngresaLaHoraElMinutoYElDiaDelStart(int startHour, int startMinutes, int startDay) {
-        HomeService.inputStartHour(startHour);
-        HomeService.inputStartMinutes(startMinutes);
-        HomeService.inputStartDay(startDay);
-    }
 
-    @And("El usuario guarda el Start")
-    public void elUsuarioGuardaElStart() {
-        HomeService.clickStartSave();
-    }
+
+
 
     @And("El usuario clickea en el boton End")
     public void elUsuarioClickeaEnElBotonEnd() {
         HomeService.clickEntryEnd();
-    }
-
-    @And("El usuario ingresa la (.*), el (.*) y el (.*) del End")
-    public void elUsuarioIngresaLaHoraElMinutoYElDiaDelEnd(int endHour, int endMinutes, int endDay) {
-        HomeService.inputEndHour(endHour);
-        HomeService.inputEndMinutes(endMinutes);
-        HomeService.inputEndDay(endDay);
     }
 
     @And("El usuario guarda el End")
@@ -63,9 +45,12 @@ public class HomeSteps extends PageSteps {
 
     @Then("Se creo un nuevo escenario")
     public void seCreoUnNuevoEscenario() {
-        HomeService.checkEntryCreated();
+        HomeValidator.checkEntryCreated();
     }
-
+    @Then("Se creo un escenario con la fecha")
+    public void seCreoUnEscenarioConLaFecha() {
+        HomeValidator.checkEntryDateCreated();
+    }
 
     @And("El usuario no guarda el escenario creado")
     public void elUsuarioNoGuardaElEscenarioCreado() {
@@ -74,27 +59,12 @@ public class HomeSteps extends PageSteps {
 
     @Then("No se crea el nuevo escenario")
     public void noSeCreaElNuevoEscenario() {
-        HomeService.checkEntryNoCreated();
+        HomeValidator.checkEntryNoCreated();
     }
 
     @When("El usuario clickea en el boton del Menu")
     public void elUsuarioClickeaEnElBotonDelMenu() {
         HomeService.clickMenuHambur();
-    }
-
-    @And("El usuario clickea en el boton settings")
-    public void elUsuarioClickeaEnElBotonSettings() {
-        SettingsService.clickSettings();
-    }
-
-    @And("El usuario habilita el modo offline")
-    public void elUsuarioHabilitaElModoOffline() {
-        SettingsService.clickSettingsOffline();
-    }
-
-    @Then("El usuario cambia la aplicacion a offline")
-    public void elUsuarioCambiaLaAplicacionAOffline() {
-        SettingsService.checkOffline();
     }
 
     @And("El usuario clickea en el boton Logout")
@@ -109,6 +79,31 @@ public class HomeSteps extends PageSteps {
 
     @Then("El usuario se desloguea")
     public void elUsuarioSeDesloguea() {
-        LoginService.isViewLoaded();
+        LoginValidator.isViewLoaded();
+    }
+
+    @And("El usuario clickea en el boton Fecha del Entry")
+    public void elUsuarioClickeaEnElBotonFechaDelEntry() {
+        HomeService.clickEntryStart();
+    }
+
+    @And("El usuario ingresa la (.*) del Start")
+    public void elUsuarioIngresaLaHoraDelStart(String startHour) {
+        HomeService.inputStartHour(startHour);
+    }
+
+    @And("El usuario ingresa la (.*) del End")
+    public void elUsuarioIngresaLaHoraDelEnd(String endHour) {
+        HomeService.inputEndHour(endHour);
+    }
+
+    @And("El usuario selecciona (.*) del Start")
+    public void elUsuarioIngresaFechaDelStart(String fechaStart) {
+        HomeService.inputStartDay(fechaStart);
+    }
+
+    @And("El usuario selecciona (.*) del End")
+    public void elUsuarioIngresaFechaDelEnd(String fechaEnd) {
+        HomeService.inputEndDay(fechaEnd);
     }
 }

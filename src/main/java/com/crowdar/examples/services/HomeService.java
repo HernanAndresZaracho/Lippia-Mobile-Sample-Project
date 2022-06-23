@@ -3,7 +3,8 @@ package com.crowdar.examples.services;
 import com.crowdar.core.actions.MobileActionManager;
 import com.crowdar.examples.constants.HomeConstants;
 import com.crowdar.examples.constants.SettingsConstants;
-import org.testng.Assert;
+
+import java.util.Objects;
 
 import static com.crowdar.core.actions.ActionManager.*;
 
@@ -15,16 +16,18 @@ public class HomeService {
         click(HomeConstants.BTN_ADD_ENTRY_XPATH);
     }
     public static void clickEntryStart() {
-        click(HomeConstants.BTN_ADD_ENTRY_START_XPATH);
+        click(HomeConstants.BTN_FECHA_ID);
     }
-    public static void inputStartHour(int S_hour) {
-        setInput(HomeConstants.INPUT_START_HOUR_XPATH, String.valueOf(S_hour));
+    public static void inputStartHour(String S_hour) {
+        String Hour = getText(HomeConstants.INPUT_START_HOUR_XPATH);
+        while(!Objects.equals(Hour, S_hour)){
+            click(HomeConstants.INPUT_START_NEXT_XPATH);
+            Hour = getText(HomeConstants.INPUT_START_HOUR_XPATH);
+        }
     }
-    public static void inputStartMinutes(int S_minutes) {
-        setInput(HomeConstants.INPUT_START_MINUTES_XPATH, String.valueOf(S_minutes));
-    }
-    public static void inputStartDay(int S_day) {
-        setInput(HomeConstants.INPUT_START_DAY_XPATH, String.valueOf(S_day));
+
+    public static void inputStartDay(String S_day) {
+        MobileActionManager.click(HomeConstants.INPUT_START_DAY_XPATH, S_day);
     }
     public static void clickStartSave() {
         click(HomeConstants.BTN_START_SAVE_XPATH);
@@ -32,14 +35,15 @@ public class HomeService {
     public static void clickEntryEnd() {
         click(HomeConstants.BTN_ADD_ENTRY_END_XPATH);
     }
-    public static void inputEndHour(int E_hour) {
-        setInput(HomeConstants.INPUT_END_HOUR_XPATH, String.valueOf(E_hour));
+    public static void inputEndHour(String E_hour) {
+        String Hour = getText(HomeConstants.INPUT_END_HOUR_XPATH);
+        while(!Objects.equals(Hour, E_hour)){
+            click(HomeConstants.INPUT_END_NEXT_XPATH);
+            Hour = getText(HomeConstants.INPUT_END_HOUR_XPATH);
+        }
     }
-    public static void inputEndDay(int E_day) {
-        setInput(HomeConstants.INPUT_END_DAY_XPATH, String.valueOf(E_day));
-    }
-    public static void inputEndMinutes(int E_minutes) {
-        setInput(HomeConstants.INPUT_END_MINUTES_XPATH, String.valueOf(E_minutes));
+    public static void inputEndDay(String E_day) {
+        MobileActionManager.click(HomeConstants.INPUT_END_DAY_XPATH, E_day);
     }
     public static void clickEndSave() {
         click(HomeConstants.BTN_END_SAVE_XPATH);
@@ -51,18 +55,6 @@ public class HomeService {
         click(HomeConstants.BTN_ADD_ENTRY_CANCEL_XPATH);
         click(HomeConstants.BTN_ADD_ENTRY_CANCEL_CONFIRM_XPATH);
     }
-    public static void checkEntryCreated() {
-        Assert.assertTrue(isVisible(HomeConstants.ADD_ENTRY_CREATED_XPATH));
-    }
-    public static void checkEntryNoCreated(){
-        Assert.assertFalse(isVisible(HomeConstants.ADD_ENTRY_CREATED_XPATH));
-    }
-
-    public static void isViewLoaded() {
-        MobileActionManager.waitVisibility(HomeConstants.BTN_MENU_HAMBUR_XPATH);
-        Assert.assertTrue(MobileActionManager.isVisible(HomeConstants.BTN_ADD_ENTRY_XPATH), "No se muestra el menu de la aplicacion");
-    }
-
     public static void clickLogout() {
         click(SettingsConstants.BTN_LOGOUT_XPATH);
     }

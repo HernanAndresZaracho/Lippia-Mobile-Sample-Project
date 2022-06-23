@@ -22,8 +22,5 @@ public class LoginService {
         inputPassword(password);
         clickLogin();
     }
-    public static void isViewLoaded(){
-        MobileActionManager.waitVisibility(LoginConstants.BTN_SING_UP_XPATH);
-        Assert.assertTrue(MobileActionManager.isVisible(LoginConstants.INPUT_MAIL_XPATH), "No se cargo la app correctamente");
-    }
+
 }

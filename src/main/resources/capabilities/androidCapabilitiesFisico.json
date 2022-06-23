@@ -4,6 +4,6 @@
   "platformName": "Android",
   "resetKeyboard": "true",
   "unicodeKeyboard": "true",
-  "appPackage": "me.clockify.andorid",
+  "appPackage": "me.clockify.android",
   "appActivity": "me.clockify.android.presenter.SplashActivity"
 }

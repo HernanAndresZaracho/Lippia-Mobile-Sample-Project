@@ -1,13 +1,13 @@
 Feature: El usuario modifica las configuraciones
 
-  Background: El usuario se encuetra logueado
+  Background:
+    Given El usuario se encuetra logueado
 
-  @Demo
-  @Settings
-  Scenario: El usuario desactiva el modo online a offline
+  @ProyectoFinal @Settings @ChangeDarkmode
+  Scenario: El usuario cambia a el modo darkmode
     When El usuario clickea en el boton del Menu
     And El usuario clickea en el boton settings
-    And El usuario habilita el modo offline
-    Then El usuario cambia la aplicacion a offline
+    And El usuario habilita el modo darkmode
+    Then El usuario cambia la aplicacion a modo darkmode
 
 
